@@ -182,6 +182,10 @@ footer[role="contentinfo"]{
   text-align: right;
 }
 
+.links-elsewhere {
+  margin-top: 0;
+}
+
 .links-elsewhere li {
   display: inline-block;
   list-style: none;
@@ -190,11 +194,12 @@ footer[role="contentinfo"]{
 
 footer[role="contentinfo"] p {
   color: $grey;
+  margin-top: 0;
 }
 
 footer[role="contentinfo"] h1 {
-  font-family: sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.35em;
 }
 
 figure {
@@ -338,6 +343,7 @@ $nav-item-height : 1.7;
 /***********/
 
 /* formatting */
+
 
 .auth {
   background: rgb(255, 255, 200);

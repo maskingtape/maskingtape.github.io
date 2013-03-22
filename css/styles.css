@@ -126,17 +126,21 @@ footer[role="contentinfo"] {
   border-top: 1px solid #888888;
   text-align: right; }
 
+.links-elsewhere {
+  margin-top: 0; }
+
 .links-elsewhere li {
   display: inline-block;
   list-style: none;
   padding-left: 1em; }
 
 footer[role="contentinfo"] p {
-  color: #888888; }
+  color: #888888;
+  margin-top: 0; }
 
 footer[role="contentinfo"] h1 {
-  font-family: sans-serif;
-  font-size: 1.4rem; }
+  font-size: 1.5rem;
+  margin-bottom: 0.35em; }
 
 figure {
   margin: 0; }

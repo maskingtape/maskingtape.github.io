@@ -287,7 +287,8 @@ figcaption {
 .site-navigation ul {
   padding:0;
   margin:0;
-  display:inline-block;
+  position: relative;
+  top: 2px;
 }
 
 .site-navigation li {
@@ -321,6 +322,13 @@ $nav-item-height : 1.7;
   border-bottom: 0;
   background-color: $tb-pink;
   color: white;
+}
+
+.site-navigation .contact {
+  position: absolute;
+  right: -1px;
+  bottom: -2.2em;
+  bottom: -2rem;
 }
 
 /* Links */

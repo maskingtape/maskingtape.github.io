@@ -191,7 +191,8 @@ figcaption {
 .site-navigation ul {
   padding: 0;
   margin: 0;
-  display: inline-block; }
+  position: relative;
+  top: 2px; }
 
 .site-navigation li {
   color: white; }
@@ -227,6 +228,12 @@ figcaption {
   border-bottom: 0;
   background-color: #ff00bf;
   color: white; }
+
+.site-navigation .contact {
+  position: absolute;
+  right: -1px;
+  bottom: -2.2em;
+  bottom: -2rem; }
 
 /* Links */
 .related {

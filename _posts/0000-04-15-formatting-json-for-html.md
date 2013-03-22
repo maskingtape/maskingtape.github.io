@@ -3,6 +3,7 @@ layout: default
 category: case-studies
 title: "Formatting JSON for HTML"
 overview: Generating a data object standard for creating surveys to be rendered in HTML
+thumb: 4_15_sml.png
 related: 
 - type: project
   url: /projects/survey-engine

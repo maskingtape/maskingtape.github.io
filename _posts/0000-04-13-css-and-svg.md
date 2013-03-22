@@ -3,6 +3,7 @@ layout: default
 category: case-studies
 title: "Using SVG with CSS"
 overview: 
+thumb: 4_13_sml.png
 related: 
 - type: project
   url: /projects/satya

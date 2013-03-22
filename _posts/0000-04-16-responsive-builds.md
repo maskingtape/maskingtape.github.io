@@ -3,6 +3,7 @@ layout: default
 category: case-studies
 title: "Building Responsive Sites"
 overview: Techniques for tailoring content to device size for a project documentation site
+thumb: 4_16_sml.png
 related: 
 - type: project
   url: /projects/satya

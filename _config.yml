@@ -1,0 +1,16 @@
+############ Jekyll options
+
+safe:        false
+auto:        false
+server:      false
+
+future:      true
+lsi:         false
+pygments:    false
+markdown:    maruku
+permalink:   /:categories/:title
+baseurl:     /
+
+exclude: ['assets', 'styles.scss']
+
+

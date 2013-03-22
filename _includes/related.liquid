@@ -1,0 +1,15 @@
+
+{% if related != empty %}
+  {% if inline != true %}
+<article class="related">
+<h2>Related</h2>
+  {% endif %}
+<ul class="related">
+{% for item in related %}
+<li class="related-item {{ item.type }}"><a href="{{ item.url }}">{{ item.type |  replace:'-',' ' | capitalize }} - {{ item.title }}</a></li>
+{% endfor %}
+</ul>
+  {% if inline != true %}
+</article>  
+  {% endif %}
+{% endif %}

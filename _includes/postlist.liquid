@@ -1,0 +1,1 @@
+<ul class="post-list">{% for post in categories %}         <li class="text-image">    <a href="{{ post.url }}">    {% if post.thumb %}      <img src="/images/{{ post.thumb }}" alt="" class="image-default">    {% endif %}    <p class="text-image-text">{{ post.title }}</p>    </a></li>{% endfor %}</ul>

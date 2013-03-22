@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <title>
+      Daniel Eastwell: Freelance Web Developer and Designer at The Thought Ballon
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"> 
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Marvel::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })(); 
+    </script>
+    <link href="/css/styles.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico"> 
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  </head>
+  <body>
+    <div role="main">
+      <header class="header">
+        <h1>The Thought Balloon
+            <svg width="48" height="37" xmlns="http://www.w3.org/2000/svg" class="logo" preserveAspectRatio="xMinYMin" viewBox="0 0 48 37">
+              <rect fill="none" stroke-width="3" height="32" width="43" ry="3" rx="3" y="2" x="2" id="svg_1" stroke="#000000"/>
+              <rect height="4" width="7" y="32" x="10" fill="#ffffff" id="svg_2"/>
+            </svg>
+        </h1>
+      </header>
+      <nav role="navigation" class="site-navigation">
+        <h1 class="a11y">Site navigation</h1>
+        <a class="a11y hover-focus" href="#page-content">Skip to content</a>
+        <ul>
+        	<li class="overview"><a href="/"{% if page.category == null %} class="active"{% endif %}>Overview</a></li>
+        	<li class="skills"><a href="/skills"{% if page.category == 'skills' %} class="active"{% endif %}>Skills</a></li>
+        	<li class="projects"><a href="/projects"{% if page.category == 'projects' %} class="active"{% endif %}>Projects</a></li>
+        	<li class="case-studies"><a href="/case-studies"{% if page.category == 'case-studies' %} class="active"{% endif %}>Case Studies</a></li>
+        	<li class="articles"><a href="/articles"{% if page.category == 'articles' %} class="active"{% endif %}>Articles</a></li>
+        </ul>
+      </nav>
+      <article id="page-content" class="page-content">
+    {{ content }}
+      </article>
+      <footer role="contentinfo">
+        <section>
+          <h1>The Thought Balloon Elsewhere</h1>
+          <ul class="links-elsewhere">
+          	<li><a href="http://blog.thoughtballoon.co.uk">Blog</a></li>
+          	<li><a href="http://www.linkedin.com/in/daneastwell">Linked in</a></li>
+          	<li><a href="https://twitter.com/maskingtape">Twitter</a></li>
+          </ul>
+        </section>
+        <section>
+          <h1>The Thought Balloon Ltd. Daniel Eastwell +44 (0) 74033 50499</h1>
+          <p>Registered as a company in England and Wales (05417505). Registered office: 73 Church Road, Hove, BN3 2BB, UK</p>
+        </section>
+      </footer>
+    </div>
+  </body>
+</html>

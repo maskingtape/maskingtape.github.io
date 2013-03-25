@@ -1,0 +1,4 @@
+#----------- All other requests to 404 -------------------------------
+
+ErrorDocument 404 /404.html
+

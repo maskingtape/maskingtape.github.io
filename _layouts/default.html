@@ -6,19 +6,19 @@
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width"> 
-    <script type="text/javascript">
-      WebFontConfig = {
-        google: { families: [ 'Marvel::latin' ] }
-      };
-      (function() {
-        var wf = document.createElement('script');
-        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-        wf.type = 'text/javascript';
-        wf.async = 'true';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(wf, s);
-      })(); 
+    <meta name="verify-v1" content="FEVs3xt7GcwTUn98FcAgcD+maRYTIQHrtaV0Whr/DUc=">
+    <script>
+        var _gaq=[['_setAccount','UA-3134478-1'],['_trackPageview']],
+            WebFontConfig = { google: { families: [ 'Marvel::latin' ]}};
+        (function(d,t){
+          function addScript(p, url){
+             var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+              g.src=('https:'==location.protocol?p.s:p.n)+url;
+              s.parentNode.insertBefore(g,s);
+          }
+          addScript({ s: '//ssl', n: '//www'}, '.google-analytics.com/ga.js');
+          addScript({ s: 'https', n: 'http'}, '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js');
+        }(document,'script'));
     </script>
     <link href="/css/styles.css" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico"> 
@@ -68,5 +68,6 @@
         </section>
       </footer>
     </div>
+    
   </body>
 </html>

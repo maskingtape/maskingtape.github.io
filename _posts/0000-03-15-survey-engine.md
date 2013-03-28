@@ -8,6 +8,9 @@ related:
 - type: case-study
   url: /case-studies/formatting-json-for-html
   title: "Formatting JSON for HTML"
+- type: article
+  url : /articles/testing-for-jquery-users
+  title: Testing for jQuery Users
 ---
 
 # {{ page.title }}

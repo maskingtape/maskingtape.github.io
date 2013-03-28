@@ -150,7 +150,8 @@ img.image-default {
 
 pre {
   width: 100%;
-  overflow-y: auto; }
+  overflow-y: auto;
+  box-sizing: border-box; }
 
 figure {
   margin: 0; }

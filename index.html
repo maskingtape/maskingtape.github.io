@@ -17,7 +17,7 @@ layout: default
 
 <h2 class="block-icon article"><a href="/articles">Articles</a></h2>
 <ul>
-{% for post in site.categories.articles reversed %}         
+{% for post in site.categories.articles %}         
 <li>
     <a href="{{ post.url }}">{{ post.title }}</a>
 </li>
@@ -26,7 +26,7 @@ layout: default
 
 <h2 class="block-icon project"><a href="/projects">Projects</a></h2>
 <ul>
-{% for post in site.categories.projects reversed %}         
+{% for post in site.categories.projects %}         
 <li>
     <a href="{{ post.url }}">{{ post.title }}</a>
 </li>
@@ -35,7 +35,7 @@ layout: default
 
 <h2 class="block-icon case-study"><a href="/case-studies">Case Studies</a></h2>
 <ul>
-{% for post in site.categories.case-studies reversed %}         
+{% for post in site.categories.case-studies %}         
 <li>
     <a href="{{ post.url }}">{{ post.title }}</a>
 </li>

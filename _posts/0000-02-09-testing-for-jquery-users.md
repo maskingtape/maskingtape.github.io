@@ -19,7 +19,9 @@ related:
 * [Leap straight to the How To](#how_to_test)
 * [View the code used in this test on github](https://github.com/maskingtape/unit-test-tutorial)
 
-I always wondered why (especially if you worked with a test team), you needed to test your code at all. And how you could test, if you were building a web page whose success or failure was shown by out of place HTML?
+If you're at the stage you're writing javascript using jQuery and have heard of TDD, BDD or Unit Tests and wondered how to get started, or why you should bother, this article should give a gentle introduction.
+
+I always wondered why (especially if you worked with a test team), you needed to test your code at all. And how you could test, if you were building a web page whose success or failure was only shown by out of place HTML?
 
 I have been introduced to three types of testing
 
@@ -37,9 +39,9 @@ At a much simpler level, a developer who is used to enhancing a web page with jQ
 
 Once you've built your site, pretty much anything can happen - clicks, hovers, dynamically loaded content and then in a variety of browers. How can you cover it all? Where to start?
 
-The key for me was to accept that you can't. You can, however, test parts. Then at least you've tested something. 
+The key for me was to accept that you can't cover it all. You can, however, test parts. Then at least you've tested something. 
 
-Why test? Because you may not be the only person working on the code - if you have a test, then you can tell if they've broken it. You may be the only persion working on the code. In six months' time you want to know if _you've_ broken it.
+Why test? Because you may not be the only person working on the code - if you have a test, then they can tell if they've broken it. You may be the only persion working on the code. In six months' time you want to know if _you've_ broken it.
 
 Even the simplest of web pages can be quite stateful. For example if you're fetching a parameter from the URL, say, then there's a lot to bear in mind:
 
@@ -48,13 +50,13 @@ Even the simplest of web pages can be quite stateful. For example if you're fetc
 * Is the parameter you require there?
 * What if there's a hash value?
 
-To ensure your simple parameter function works, you need to go through those steps to check. If you're thorough, you need to go through them every time you change a related part of your code.
+To ensure your simple parameter function works, you'd need to go through each of those steps to check your function was working. If you're thorough, you need to go through each of those steps _every time_ you change a related part of your code.
 
-_If you've written tests, you refresh your test page._
+_If you've written tests, you only need to refresh your test page._
 
 ## How to test
 
-Take our fetching a parameter from the URL example - it's straightforward, to write what you expect the function to do in those situations:
+Take our fetching-a-parameter-from-the-URL example, it's straightforward to write what you'd expect the function to do in those situations:
 
 * Does it have no parameter at all?
   _You'd expect the function to return null._
@@ -85,7 +87,7 @@ Your tests need to live somewhere separate to your code, but have access to it. 
         chai.js
         mocha.css
       
-Let's have a look at this. `index.html` and `script.js` are your code as written (or as yet to be written).
+Let's have a look at this. `index.html` and `script.js` are your site code (yet to be written).
 
 `/test` will contain all your tests. You'll need an HTML file for each set of tests (or all of them) and a `test.js` file containing your tests. We'll come to that in a bit.
 
@@ -171,6 +173,8 @@ Other than that it reads as english. I've filled the rest in at [this commit in 
 
 ![Screenshot of all the tests failing](/images/2_9_empty.png)
 
+Everything's failing. Good. Now let's start fixing that...
+
 ### Accessing your function
 
 Let's actually write some code now. I've added in my html file and my javascript. I've added the `getURIParam` function, but it's empty for now.
@@ -204,7 +208,7 @@ Here's the javascript
       "use strict";
       
       var self = {
-        getURIParam : function getURIParam(uri){
+        getURIParam : function getURIParam(uri, param){
         
         }
       };
@@ -218,8 +222,9 @@ You can see that I can access my function using `mySite.getURIParam`.
 I can now add this function call to my unit test.
 
     it('should return null if there are no parameters in the URI', function(){
-      var url = "http://www.example.com/index.html";
-      expect(mySite.getURIParam(url)).to.be.null;
+      var url = 'http://www.example.com/index.html',
+          param = 'test';
+      expect(mySite.getURIParam(url, param)).to.be.null;
     });
 
 A couple of things to note here: firstly the Chai syntax - it reads as english. You could pretty much guess the syntax and it would probably do what you imagined it would.
@@ -228,22 +233,139 @@ Secondly, note we're not actually reading the URL from the page location. We're 
 
 ![Screenshot of all the first tests failing with appropriate message](/images/2_9_one_test.png)
  
-You've now written unit tests for a simple function. Looking at these now, you might see other possible tests. What if there's no filepath? Or a very long, complex one - would you need to test for that? Probably not, given the search for `'?'` but this indicates how writing the tests can make your approach to writing code more thorough.
+The full set of tests are [on github at this commit](https://github.com/maskingtape/unit-test-tutorial/blob/f7fefc6a903fd0f5afaef570178939da98d6a2cc/test/test.js). 
+
+Looking at these now, you might see other possible tests. What if there's no filepath? Or if there are parameters, but the one requested isn't present. Maybe your code needs to cope with the parameters being in any order. 
+
+You can write Chai assertions to cover these cases - writing the tests can make your coding more thorough and robust.
+
+### Writing the code
+
+Finally! We can start filling in the function.
+
+It needs to return something, and I'll initialise that to `null`:
+
+    
+    getURIParam : function getURIParam(uri, param){
+      var val = null;
+      return val;
+    }
+    
+If you run the tests now, the tests for no parameters and parameter not present pass, hooray! Of course that's really a false pass as we've done nothing.
+
+I'll get the search value from the uri string, and the parameters as an array from that search value:
+
+    
+    getURIParam : function getURIParam(uri, param){
+      var val = null,
+          search = uri.split('?')[1],
+          params = search.split('&');
+          
+      return val;
+    }
+
+Immediately we can see a problem. Thank goodnes for those tests!
+
+![Screenshot of test results showing code error in first test](/images/2_9_code_fail.png)
+    
+We can see that the first test has failed completely. We're splitting `search`, assuming it's an existing string. If it doesn't exist, we should be returning null (test 4).
+
+Returning to the code:
+
+    getURIParam : function getURIParam(uri, param){
+      var val = null,
+          search = uri.split('?')[1],
+          params;
+
+      if(typeof search === 'undefined'){
+        return null;
+      }else{
+        params = search.split('&');
+      }
+      
+      return val;
+    }
+
+That's better. Tests 1 and 4 now pass, but we can be sure that at least test 4 is passing meaningfully.
+
+Changing the code to 
+
+    getURIParam : function getURIParam(uri, param){
+      var val = null,
+          search = uri.split('?')[1],
+          params = [];  // Given an initial assignment  
+                        // to set Array type
+
+      if(typeof search === 'undefined'){
+        return null;
+      }else{
+        params = search.split('&');
+      }
+      
+      if(params.length === 0){ // check for any parameters
+        return null;
+      }else{
+        for(var i=0;i<params.length;i++){
+          console.log(params[i]);
+        }
+      }
+      
+      return val;
+    }
+
+Now tests 1 and 4 pass meaningfully, but I'm still thinking of potential issues - what if we have an `&amp;`, rather than an `&` in the `uri`? Would our code cope? What if there's no `uri` at all? Or a param has not been passed in?
+
+I've added a `console.log` in the loop over the parameters I've got from the `uri` string.
+
+    test=3              script.js:22
+    item=003            script.js:22
+    name=dan            script.js:22
+    test=3              script.js:22
+    item=003            script.js:22
+    name=dan            script.js:22
+    amount=3            script.js:22
+    item=003            script.js:22
+    name=dan            script.js:22
+    test=3#inPageLink   script.js:22
+      
+I'd like to get the parameter value before the equals sign and if that's the one we're looking for return the value.
+
+Here's the for loop with the code I've replaced that `console.log` with:
+
+    for(var i=0;i<params.length;i++){
+      var arr = params[i].split('='),
+          key    = arr[0],
+          value  = arr[1];
+      if(key === param){
+        return value;
+      }
+    }
+    
+And here's the output: 
+
+![Tests running with all bar one passing](/images/2_9_penultimate.png)
+
+Much better! All done, bar one failing test - what to do when there's a hash value.
+
+If I change the return to strip off everything after any `#` symbol:
+
+    return value.split('#')[0];
+    
+All tests pass!
+
+![All tests passing](/images/2_9_passing.png)
+
+You've now written unit tests for a simple function. 
+
+I imagine the function could be written better, with more tests - the [code is here](https://github.com/maskingtape/unit-test-tutorial) - feel free to play.
+
+By the way, don't use this function in a real project - I've noted how there are missing tests, and missing functionality, it's illustrative only. 
 
 ## Why and When to Unit Test? 
 
-Makes your code simpler and more reusable
+Testing makes your code simpler and more reusable - you have to break your code into 'units' to enable testing, and by doing so, your code becomes modular.
 
-When you have a simple piece of code
-Not such a good idea with DOM manipulation and user interaction
-
-## Testing behaviour
-
-### The setup
-
-### Test the state of the output HTML with jQuery
-
-### The teardown
+Test when you have a simple piece of code that has to cater for many situations, as in the example. It's not such a good idea to Unit Test with DOM manipulation and user interaction - that's what behavioural and integration tests should cover.
 
 ## When not to test
 
@@ -253,11 +375,13 @@ To reduce that start up time, you really need to be sure that you are writing Un
 
 You don't need to ensure behavioural tests cover _every_ state in your system. Be judicious in your choice of tests.
 
-As you may well be working from a written requirement (or even writing them yourself), you have in plain english a documentation of how the application you're writing is meant to behave. What's more those specifications are linked directly to the code base. You're best off starting writing your tests from those requirements.
-
 If you get a bug, write a test to cover your expectation in the situation that causes the bug. E.g. if adding in a `#!` sequence breaks your url parameter getting function, then write a test expecting what should happen in that case.
 
 Finally, ensure your tests don't just cover the 'happy path'. You need to ensure you're testing beyond 'what just works', and also consider what might break your code and test for that.
+
+## Wrapping up
+
+That's Unit Testing - testing the function in isolation. In the next article, I'll be using that function in the HTML, and using Behavioural Tests (and finally some jQuery) to test what a user might actually do.
 
 {% assign related = page.related %}
 {% include related.liquid %}

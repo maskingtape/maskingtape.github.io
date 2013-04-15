@@ -7,18 +7,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width"> 
     <meta name="verify-v1" content="FEVs3xt7GcwTUn98FcAgcD+maRYTIQHrtaV0Whr/DUc=">
+    <!--[if lt IE 9]>
+    <script src="/lib/html5shiv.js"></script>
     <script>
-        var _gaq=[['_setAccount','UA-3134478-1'],['_trackPageview']],
-            WebFontConfig = { google: { families: [ 'Marvel::latin' ]}};
-        (function(d,t){
-          function addScript(p, url){
-             var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-              g.src=('https:'==location.protocol?p.s:p.n)+url;
-              s.parentNode.insertBefore(g,s);
-          }
-          addScript({ s: '//ssl', n: '//www'}, '.google-analytics.com/ga.js');
+      isltIE9 = true;
+    </script>
+    <link href='http://fonts.googleapis.com/css?family=Marvel' rel='stylesheet' type='text/css'>
+    <![endif]-->
+    <script>
+      // http://git.io/jkjjlg
+      var _gaq=[['_setAccount','UA-3134478-1'],['_trackPageview']],
+          WebFontConfig = { google: { families: [ 'Marvel::latin' ]}};
+      (function(d,t){
+        function addScript(p, url){
+           var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?p.s:p.n)+url;
+            s.parentNode.insertBefore(g,s);
+        }
+        addScript({ s: '//ssl', n: '//www'}, '.google-analytics.com/ga.js');
+        if(!isltIE9){
           addScript({ s: 'https', n: 'http'}, '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js');
-        }(document,'script'));
+        }
+      }(document,'script'));
     </script>
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/lib/prism.css" rel="stylesheet">

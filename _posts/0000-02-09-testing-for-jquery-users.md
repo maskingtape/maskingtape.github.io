@@ -264,7 +264,7 @@ I'll get the search value from the uri string, and the parameters as an array fr
       return val;
     }
 
-Immediately we can see a problem. Thank goodnes for those tests!
+Immediately we can see a problem. Thank goodness for those tests!
 
 ![Screenshot of test results showing code error in first test](/images/2_9_code_fail.png)
     

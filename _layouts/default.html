@@ -25,7 +25,7 @@
             s.parentNode.insertBefore(g,s);
         }
         addScript({ s: '//ssl', n: '//www'}, '.google-analytics.com/ga.js');
-        if(!isltIE9){
+        if(!window.isltIE9){
           addScript({ s: 'https', n: 'http'}, '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js');
         }
       }(document,'script'));

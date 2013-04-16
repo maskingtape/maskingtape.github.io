@@ -100,12 +100,13 @@ $maxwidth : 49;
 }
 
 @mixin border-box{
-    -webkit-box-sizing: border-box; // Safari/Chrome, other WebKit 
+  -webkit-box-sizing: border-box; // Safari/Chrome, other WebKit 
 	-moz-box-sizing: border-box;    // Firefox, other Gecko 
 	box-sizing: border-box;         // Opera/IE 8+ 
 }
 
 div[role="main"],
+.main,
 .page-content {
   @include maxwidth(1);
   margin: 0 auto;
@@ -113,8 +114,13 @@ div[role="main"],
   position: relative;
 }
 
-div[role="main"] {
+div[role="main"],
+.main {
   @include maxwidth(2);
+}
+
+.lt-ie9 svg {
+  display: none;
 }
 
 /* header */
@@ -327,8 +333,9 @@ $nav-item-height : 1.7;
 
 .site-navigation .contact {
   position: absolute;
-  right: -1px;
-  bottom: -2.2em;
+  right: 0;
+  right: -0.1rem;
+  bottom: -1.75em;
   bottom: -2rem;
 }
 

@@ -286,6 +286,7 @@ figcaption {
 @mixin block-icon-parent {
   position:relative;
   padding-left: 1.5em;
+  *padding-left: 0;
   list-style: none;
 }
 
@@ -390,6 +391,7 @@ $nav-item-height : 1.7;
 
 .site-navigation li{
   padding-left: #{$nav-item-height}em;
+  *padding-left: 0;
 }
 .site-navigation li:before {
   width: #{$nav-item-height}em;

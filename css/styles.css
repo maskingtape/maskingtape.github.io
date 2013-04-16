@@ -242,6 +242,9 @@ figcaption {
   bottom: -1.75em;
   bottom: -2rem; }
 
+.lt-ie9 .contact {
+  bottom: -1.7em; }
+
 /* Links */
 .related {
   padding: 0; }

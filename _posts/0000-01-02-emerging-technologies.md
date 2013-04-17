@@ -25,4 +25,7 @@ overview: HTML5 and its APIs, CSS3, devices
     <li class="related-item case-study"><a href="/case-studies/css-and-svg">Case Study - Using SVG with CSS</a></li>
   </ul> 
 * Responsive design (beyond the desktop, mobile first)
+  <ul class="related">
+    <li class="related-item"><a href="/colophon">Colophon - about this site</a></li>
+  </ul>
 * Web fonts (browser/operating system type rendering, web-font services, server-side)

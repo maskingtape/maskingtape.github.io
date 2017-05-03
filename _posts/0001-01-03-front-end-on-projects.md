@@ -2,7 +2,7 @@
 layout: default
 category: services
 title: Projects
-overview: Represent company interests from a Front-end perspective from the inception of client projects
+overview: How to represent the Front-end when working on projects
 ---
 
 # {{ page.title }}
